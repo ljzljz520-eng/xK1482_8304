@@ -217,7 +217,11 @@ func editableDetailFromProject(project CourseProject) EditableCourseDetail {
 }
 
 func chapterListFromModel(chapters []Chapter) []Chapter {
-	return chapters
+	cloned := make([]Chapter, len(chapters))
+	for index, chapter := range chapters {
+		cloned[index] = cloneChapter(chapter)
+	}
+	return cloned
 }
 
 func totalDuration(chapters []Chapter) int {
